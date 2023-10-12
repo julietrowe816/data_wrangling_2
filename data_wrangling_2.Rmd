@@ -28,6 +28,39 @@ nsduh_html =
 marj_use_df = 
   nsduh_html |>
   html_table() |>
-  first()
+  first() |>
+  slice(-1)
+```
+
+
+Import star wars ...
+
+```{r}
+swm_url = "https://www.imdb.com/list/ls070150896/"
+
+swm_html = 
+  read_html("https://www.imdb.com/list/ls070150896/")
+
+```
+
+
+```{r}
+swm_title_vec =
+  swm_html |>
+  html_elements(".lister-item-header a") |>
+  html_text()
+
+swm_gross_rev_vec =
+  swm_html |>
+  html_elements(".text-small:nth-child(7) span:nth-child(5)") |>
+  html_text()
+
+runtime_vec = 
+  swm_html |>
+  html_elements(".runtime") |>
+  html_text()
+
+swm_df = 
+  tibble(swm_title_vec, rev = swm_gross_rev_vec, runtime=runtime_vec)
 ```
 
