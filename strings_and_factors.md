@@ -141,3 +141,47 @@ str_detect(string_vec, "^[0-9][a-zA-Z]")
 ```
 
     ## [1]  TRUE  TRUE FALSE  TRUE
+
+``` r
+string_vec = c(
+  'Its 7:11 in the evening',
+  'want to go to 7-11?',
+  'my flight is AA711',
+  'NetBios: scanning ip 203.167.114.66'
+  )
+
+str_detect(string_vec, "7.11")
+```
+
+    ## [1]  TRUE  TRUE FALSE  TRUE
+
+``` r
+string_vec = c(
+  'The CI is [2, 5]',
+  ':-]',
+  ':-[',
+  'I found the answer on pages [6-7]'
+  )
+
+str_detect(string_vec, "\\[")
+```
+
+    ## [1]  TRUE FALSE  TRUE  TRUE
+
+## Factors
+
+``` r
+vec_sex = factor(c("male", "male", "female", "female"))
+
+as.numeric(vec_sex)
+```
+
+    ## [1] 2 2 1 1
+
+``` r
+vec_sex = fct_relevel(vec_sex, "male")
+
+as.numeric(vec_sex)
+```
+
+    ## [1] 1 1 2 2
