@@ -1,0 +1,69 @@
+---
+title: "strings_and_factors"
+author: "Juliet Rowe"
+date: "2023-10-17"
+output: github_document
+---
+
+```{r}
+library(tidyverse)
+library(rvest)
+library(p8105.datasets)
+```
+
+
+## Strings and manipulations
+
+```{r}
+string_vec = c("my", "name", "is", "jeff")
+
+str_detect(string_vec, "jeff")
+str_detect(string_vec, "e")
+str_detect(string_vec, "Jeff")
+
+str_replace(string_vec, "jeff", "Jeff Goldsmith")
+```
+
+
+```{r}
+string_vec = c(
+  "i think we all rule for participating",
+  "i think i have been caught",
+  "i think this will be quite fun actually",
+  "it will be fun, i think"
+  )
+
+str_detect(string_vec, "i think")
+str_detect(string_vec, "^i think")
+str_detect(string_vec, "i think$")
+```
+
+
+```{r}
+string_vec = c(
+  "Time for a Pumpkin Spice Latte!",
+  "went to the #pumpkinpatch last weekend",
+  "Pumpkin Pie is obviously the best pie",
+  "SMASHING PUMPKINS -- LIVE IN CONCERT!!"
+  )
+
+str_detect(string_vec,"Pumpkin")
+str_detect(string_vec,"pumpkin")
+str_detect(string_vec,"[Pp]umpkin")
+```
+
+
+```{r}
+string_vec = c(
+  '7th inning stretch',
+  '1st half soon to begin. Texas won the toss.',
+  'she is 5 feet 4 inches tall',
+  '3AM - cant sleep :('
+  )
+
+str_detect(string_vec, "[0-9]")
+str_detect(string_vec, "^[0-9]")
+str_detect(string_vec, "^[0-9][a-z]")
+str_detect(string_vec, "^[0-9][a-zA-Z]")
+```
+
